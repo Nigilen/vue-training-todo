@@ -3,9 +3,9 @@ import { ref, watchEffect } from 'vue';
 
 export const useTodoStore = defineStore('todos', () => {
 
-  const todos = ref(
-    JSON.parse(localStorage.getItem('TODOS') || '[]')
-  )
+  const todos = ref(localStorage.getItem('TODOS') 
+    ? JSON.parse(localStorage.getItem('TODOS')) 
+    : [])
   
   const inputValue = ref('');
 

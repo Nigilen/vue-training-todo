@@ -6,11 +6,11 @@
   const { todos } = useTodoStore();
 
   const activeTodo = computed(() => {
-    return todos.filter((todo) => todo.completed === false)
+    return todos.filter((todo) => !todo.completed)
   })
 
   const completedTodo = computed(() => {
-    return todos.filter((todo) => todo.completed === true)
+    return todos.filter((todo) => todo.completed)
   })
 
   const currentTab = ref('InProgress');

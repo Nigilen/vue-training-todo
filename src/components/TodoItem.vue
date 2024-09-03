@@ -10,17 +10,17 @@ const props = defineProps({
   id: Number
 })
 
-const model = defineModel()
+const todoCheck = defineModel();
 
 function toggleTodo() {
-  model.value = !model.value
+  todoCheck.value = !todoCheck.value
 }
 
 </script>
 
 <template>
   <li>
-    <input type="checkbox" v-bind="props" :checked="model" @change="toggleTodo">
+    <input type="checkbox" v-bind="props" :checked="todoCheck" @change="toggleTodo">
     <label :for="props.id">{{ props.text }}</label>
     <button @click="removeTodo(props.id)">
       <IconCross />
