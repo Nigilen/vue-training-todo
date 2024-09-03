@@ -31,7 +31,7 @@
   <div class="tabs-buttons">
     <button 
       type="button"
-      v-for="(tab, index) in tabs"
+      v-for="(_, index) in tabs"
       :key="index"
       @click="setCurentTab(index)"
     >
@@ -42,11 +42,11 @@
   
   <ul class="tabs-content">
     <TodoItem 
-      v-for="(item, index) in tabs[currentTab]"
+      v-for="(item) in tabs[currentTab]"
       :text="item.text"
-      :id="index"
-      :key="index"
-      v-model="item.completed"
+      :id="item.id"
+      :key="item.id"
+      :checked="item.completed"
     >
     </TodoItem>
   </ul>

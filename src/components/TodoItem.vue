@@ -2,7 +2,7 @@
 import IconCross from '@/components/icons/IconCross.vue';
 import { useTodoStore } from '@/stores/todos';
 
-const { removeTodo } = useTodoStore();
+const { removeTodo, todos } = useTodoStore();
 
 const props = defineProps({
   text: String,
@@ -10,17 +10,18 @@ const props = defineProps({
   id: Number
 })
 
-const todoCheck = defineModel();
-
 function toggleTodo() {
-  todoCheck.value = !todoCheck.value
+  const todo = todos.find((todo) => todo.id === props.id)
+  if (todo) {
+    todo.completed = !todo.completed
+  }
 }
 
 </script>
 
 <template>
   <li>
-    <input type="checkbox" v-bind="props" :checked="todoCheck" @change="toggleTodo">
+    <input type="checkbox" v-bind="props" :checked="props.checked" @change="toggleTodo">
     <label :for="props.id">{{ props.text }}</label>
     <button @click="removeTodo(props.id)">
       <IconCross />

@@ -14,7 +14,7 @@ const open = ref(false);
     <div v-if="open" class="modal">
       <div class="wrapper">
         <AddTodo />
-        <button @click="open = false">Close</button>
+        <button @click="open = false">Add</button>
       </div>
     </div>
   </Teleport>
@@ -27,13 +27,14 @@ const open = ref(false);
   background-color: aliceblue;
   padding: 20px;
   border-radius: 20px;
+  z-index: 19;
 }
 
 .modal {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 20;
   width: 100%;
   height: 100%;
   display: flex;

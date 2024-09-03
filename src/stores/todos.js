@@ -3,14 +3,13 @@ import { ref, watchEffect } from 'vue';
 
 export const useTodoStore = defineStore('todos', () => {
 
-  const todos = ref(localStorage.getItem('TODOS') 
-    ? JSON.parse(localStorage.getItem('TODOS')) 
-    : [])
+  const todos = ref(JSON.parse(localStorage.getItem('TODOS')) || [])
   
   const inputValue = ref('');
 
   function addItem() {
     todos.value.push({
+      id: Date.now(),
       text: inputValue.value,
       completed: false
     })
@@ -18,7 +17,12 @@ export const useTodoStore = defineStore('todos', () => {
   }
 
   function removeTodo(id) {
-    todos.value.splice(id, 1);
+    const index = todos.value.findIndex((todo) => todo.id === id);
+
+    if (index !== -1) {
+      todos.value.splice(index, 1);
+    }
+
   }
 
   watchEffect(() => {
