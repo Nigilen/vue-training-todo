@@ -27,8 +27,8 @@
     padding-block: 50px;
     padding-inline-start: 10px;
     position: fixed;
-    top: 0;
-    bottom: 0;
+    inset-block-start: 0;
+    inset-block-end: 0;
   }
 
   .todos {
@@ -45,12 +45,12 @@
   }
 
   .main {
-    width: 100%;
+    inline-size: 100%;
     margin-inline-start: 160px;
   }
   
   .todos-nav__link {
-    width: min-content;
+    inline-size: min-content;
     text-wrap: nowrap;
     padding: 5px;
     text-decoration: none;
@@ -62,8 +62,8 @@
   .todos-nav__link::after {
     content: '';
     display: block;
-    width: 0;
-    height: 1px;
+    inline-size: 0;
+    block-size: 1px;
     background-color: #202124;
     transition-duration: .3s;
   }
@@ -73,8 +73,8 @@
   }
 
   .todos-nav__link:hover::after {
-    height: 1px;
-    width: 100%;
+    block-size: 1px;
+    inline-size: 100%;
   }
 
 </style>

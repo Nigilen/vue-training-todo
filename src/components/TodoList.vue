@@ -27,7 +27,7 @@
   .tabs-buttons {
     margin-block-end: 50px;
     display: flex;
-    width: 100%;
+    inline-size: 100%;
     justify-content: space-between;
   }
 
@@ -35,7 +35,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 100%;
+    inline-size: 100%;
     list-style: none;
     padding: 0;
     margin: 0;

@@ -93,8 +93,8 @@ function editTodo(evt, props) {
   .todo__checkbox + span {
     border: 2px solid #757575;
     border-radius: 3px;
-    width: 18px;
-    height: 18px;
+    inline-size: 18px;
+    block-size: 18px;
     display: flex;
   }
   .todo__checkbox:checked + span::after {
@@ -102,9 +102,9 @@ function editTodo(evt, props) {
     border-radius: 1px;
     display: block;
     margin: auto;
-    top: 0;
-    left: 0;
-    width: 60%;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    inline-size: 60%;
     aspect-ratio: 1 / 1;
     background-color: #757575;
   }

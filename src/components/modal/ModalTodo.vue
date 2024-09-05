@@ -6,7 +6,6 @@ import { useTodoStore } from '@/stores/storeTodos';
 const store = useTodoStore();
 const { closeModal } = useTodoStore();
 
-
 </script>
 
 <template>
@@ -33,17 +32,17 @@ const { closeModal } = useTodoStore();
   background-color: #fff;
   padding: 20px 14px;
   border-radius: 7px;
-  z-index: 19;
+  z-index: 10;
   min-width: 600px;
 }
 
 .modal {
   position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 20;
-  width: 100%;
-  height: 100%;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  z-index: 11;
+  inline-size: 100%;
+  block-size: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

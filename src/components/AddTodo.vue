@@ -41,7 +41,7 @@ fieldset {
 .add-todo__inputs {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  inline-size: 100%;
   gap: 13px;
 }
 
