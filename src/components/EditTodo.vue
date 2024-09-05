@@ -2,15 +2,15 @@
   import { useTodoStore } from '@/stores/storeTodos';
 
   const store = useTodoStore();
-  const { addItem } = useTodoStore();
+  const { editItem } = useTodoStore();
   
 </script>
 
 <template>
-  <form @submit.prevent="addItem" class="add-todo">
+  <form @submit.prevent="editItem(store.idValue)" class="add-todo">
     <fieldset class="add-todo__inputs">
-      <input class="add-todo__title" type="text" v-model.trim="store.titleValue" required placeholder="Введите заголовок">
-      <textarea class="add-todo__description" v-model.trim="store.descriptionValue" placeholder="Задача..."></textarea>
+      <input class="add-todo__title" type="text" v-model.trim="store.titleValue" required>
+      <textarea class="add-todo__description" v-model.trim="store.descriptionValue"></textarea>
     </fieldset>
     <fieldset class="add-todo__bottom">
       <select class="add-todo__priority" v-model="store.priorityValue" required>
@@ -19,7 +19,7 @@
         <option>medium</option>
         <option>high</option>
       </select>
-      <button class="add-todo__btn" type="submit">добавить</button>
+      <button class="add-todo__btn" type="submit">Сохранить</button>
     </fieldset>
   </form>
 </template>

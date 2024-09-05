@@ -1,51 +1,22 @@
 <script setup>
-  import { ref, computed, reactive } from 'vue';
-  import { useTodoStore } from '@/stores/todos';
+  import { useRoute } from 'vue-router';
+  import { useTodoStore } from '@/stores/storeTodos';
   import TodoItem from './TodoItem.vue';
 
-  const { todos } = useTodoStore();
-
-  const activeTodo = computed(() => {
-    return todos.filter((todo) => !todo.completed)
-  })
-
-  const completedTodo = computed(() => {
-    return todos.filter((todo) => todo.completed)
-  })
-
-  const currentTab = ref('InProgress');
-
-  const tabs = reactive({
-    InProgress: activeTodo,
-    Done: completedTodo
-  })
-
-  function setCurentTab(index) {
-    currentTab.value = index
-  }
-
+  const store = useTodoStore();
+  const route = useRoute();
 </script>
 
-
 <template>
-  <div class="tabs-buttons">
-    <button 
-      type="button"
-      v-for="(_, index) in tabs"
-      :key="index"
-      @click="setCurentTab(index)"
-    >
-      {{ index }}
-    </button>
-  </div>
-
-  
   <ul class="tabs-content">
     <TodoItem 
-      v-for="(item) in tabs[currentTab]"
-      :text="item.text"
+      v-for="(item) in store.tabs[route.path]"
       :id="item.id"
+      :date="item.date"
+      :title="item.title"
+      :description="item.description"
       :key="item.id"
+      :priority="item.priority"
       :checked="item.completed"
     >
     </TodoItem>
@@ -53,7 +24,6 @@
 </template>
 
 <style scoped>
-
   .tabs-buttons {
     margin-block-end: 50px;
     display: flex;
@@ -70,5 +40,4 @@
     padding: 0;
     margin: 0;
   }
-
 </style>

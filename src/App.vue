@@ -1,21 +1,80 @@
 <script setup>
-import AddTodo from '@/components/AddTodo.vue'
-import TodoList from '@/components/TodoList.vue'
-// import ModalAddTodo from './components/ModalAddtodo.vue';
+  import ButtonAddTodo from './components/ButtonAddTodo.vue';
+  import ModalTodo from './components/modal/ModalTodo.vue';
+  import { RouterLink } from 'vue-router';
 </script>
 
 <template>
   <header>
-    <!-- <ModalAddTodo /> -->
-    <AddTodo />
+    <nav class="todos-nav">
+      <RouterLink class="todos-nav__link" to="/">Все</RouterLink>
+      <RouterLink class="todos-nav__link" to="/active">В работе</RouterLink>
+      <RouterLink class="todos-nav__link" to="/completed">Завершенные</RouterLink>
+    </nav>
   </header>
-  <main>
-    <TodoList />
+  <main class="main">
+    <section class="todos">
+      <ButtonAddTodo />
+      <RouterView />
+    </section>
   </main>
+  <ModalTodo />
 </template>
 
 <style scoped>
-header {
-  padding: 20px 0 50px 0;
-}
+
+  header {
+    padding-block: 50px;
+    padding-inline-start: 10px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+  }
+
+  .todos {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .todos-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .main {
+    width: 100%;
+    margin-inline-start: 160px;
+  }
+  
+  .todos-nav__link {
+    width: min-content;
+    text-wrap: nowrap;
+    padding: 5px;
+    text-decoration: none;
+    font: inherit;
+    color: #868686;
+    position: relative;
+  }
+
+  .todos-nav__link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 1px;
+    background-color: #202124;
+    transition-duration: .3s;
+  }
+
+  .todos-nav__link:hover {
+    color: #202124;;
+  }
+
+  .todos-nav__link:hover::after {
+    height: 1px;
+    width: 100%;
+  }
+
 </style>
