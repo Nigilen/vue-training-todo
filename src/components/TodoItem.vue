@@ -16,7 +16,7 @@ const props = defineProps({
 function toggleTodo() {
   const todo = todos.find((todo) => todo.id === props.id)
   if (todo) {
-    todo.completed = !todo.completed
+    todo.completed = !todo.completed;
   }
 }
 
