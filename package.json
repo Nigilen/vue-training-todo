@@ -2,7 +2,7 @@
   "name": "todo-vue",
   "version": "0.0.0",
   "type": "module",
-  "homepage": "/vue-training-todo/",
+  "homepage": "vue-training-todo",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
