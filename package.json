@@ -5,6 +5,7 @@
   "homepage": "vue-training-todo",
   "scripts": {
     "dev": "vite",
+    "test": "vitest",
     "build": "vite build",
     "deploy": "gh-pages -d dist",
     "preview": "vite preview",
@@ -17,10 +18,13 @@
     "vue-router": "^4.4.3"
   },
   "devDependencies": {
+    "@testing-library/vue": "^8.1.0",
     "@vitejs/plugin-vue": "^5.0.5",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.23.0",
     "gh-pages": "^6.1.1",
-    "vite": "^5.3.1"
+    "happy-dom": "^15.7.3",
+    "vite": "^5.3.1",
+    "vitest": "^2.0.5"
   }
 }

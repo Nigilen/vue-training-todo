@@ -2,7 +2,7 @@
 import IconTrash from '@/components/icons/IconTrash.vue';
 import { useTodoStore } from '@/stores/storeTodos';
 
-const { openModal, removeTodo, todos } = useTodoStore();
+const { openModal, removeTodo, toggleTodo } = useTodoStore();
 
 const props = defineProps({
   id: Number,
@@ -13,12 +13,6 @@ const props = defineProps({
   checked: Boolean
 })
 
-function toggleTodo() {
-  const todo = todos.find((todo) => todo.id === props.id)
-  if (todo) {
-    todo.completed = !todo.completed;
-  }
-}
 
 function editTodo(evt, props) {
   if(evt.target.tagName === 'P') {
@@ -36,7 +30,7 @@ function editTodo(evt, props) {
         type="checkbox" 
         :id="props.id" 
         :checked="props.checked" 
-        @change="toggleTodo" />
+        @change="toggleTodo(props.id)" />
       <span></span>
       {{ props.title }}
     </label>
@@ -44,7 +38,6 @@ function editTodo(evt, props) {
       {{ props.description }}
     </p>
     <p class="todo__date">{{ props.date }}</p>
-    <!-- <p class="todo__priority">{{ props.priority }}</p> -->
     <button class="todo__remove-btn" @click="removeTodo(props.id)">
       <IconTrash />
     </button>

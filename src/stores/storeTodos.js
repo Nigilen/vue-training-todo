@@ -53,19 +53,30 @@ export const useTodoStore = defineStore('todos', () => {
     priorityValue.value = '';
   }
 
+  function toggleTodo(id) {
+    const todo = todos.value.find((todo) => todo.id === id)
+    if (todo) {
+      todo.completed = !todo.completed;
+    }
+  }
+  
+
   function openModal(props) {
     titleValue.value = '';
     descriptionValue.value = '';
     priorityValue.value = '';
     isOpenModal.value = true;
     isEdit.value = false;
-    if(props.id) {
-      isEdit.value = true;
-      const todo = todos.value.find((item) => item.id === props.id);
-      titleValue.value = todo.title;
-      descriptionValue.value = todo.description;
-      priorityValue.value = todo.priority;
-      idValue.value = todo.id;
+
+    if(props) {
+      if(props.id) {
+        isEdit.value = true;
+        const todo = todos.value.find((item) => item.id === props.id);
+        titleValue.value = todo.title;
+        descriptionValue.value = todo.description;
+        priorityValue.value = todo.priority;
+        idValue.value = todo.id;
+      }
     }
   }
 
@@ -86,7 +97,8 @@ export const useTodoStore = defineStore('todos', () => {
     localStorage.setItem('TODOS', JSON.stringify(todos.value))
   })
 
-  return { 
+  return {
+    toggleTodo,
     todos, 
     addItem, 
     removeTodo, 

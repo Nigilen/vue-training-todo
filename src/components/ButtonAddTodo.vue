@@ -3,6 +3,7 @@ import { useTodoStore } from '@/stores/storeTodos';
 
 const { openModal } = useTodoStore();
 
+
 </script>
 
 <template>
