@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, test } from 'vitest';
 import { setActivePinia, createPinia } from 'pinia'
-import { useTodoStore } from '../stores/storeTodos'
+import { useTodoStore } from './storeTodos'
 
 const singleTodoMock = {
   id: 2,
